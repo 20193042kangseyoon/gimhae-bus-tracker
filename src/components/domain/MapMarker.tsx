@@ -1,5 +1,3 @@
-import React from 'react'
-
 export interface MapMarkerProps {
   /** 마커에 표시될 버스 번호 */
   busNumber: string

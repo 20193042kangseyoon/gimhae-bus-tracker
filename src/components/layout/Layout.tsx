@@ -1,5 +1,3 @@
-import React from 'react'
-
 export interface LayoutProps {
   /** 이 레이아웃 안에 담길 내용물 (버스 카드 목록 등) */
   children: React.ReactNode

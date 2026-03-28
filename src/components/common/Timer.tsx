@@ -1,5 +1,3 @@
-import React from 'react'
-
 // 1. Props 정의: 외부에서 보여줄 시간 텍스트만 쏙 전달받습니다.
 export interface TimerProps {
   timeText: string

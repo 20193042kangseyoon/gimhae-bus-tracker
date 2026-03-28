@@ -1,4 +1,3 @@
-import React from 'react'
 // 우리가 방금 만든 만능 뼈대 부품을 불러옵니다!
 import { Skeleton } from '../common/Skeleton'
 

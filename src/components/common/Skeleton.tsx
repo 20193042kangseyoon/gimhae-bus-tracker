@@ -1,5 +1,3 @@
-import React from 'react'
-
 export interface SkeletonProps {
   /** * 너비, 높이, 둥근 정도 등 뼈대의 모양을 자유롭게 결정할 수 있도록
    * 외부에서 Tailwind 클래스를 통째로 주입받습니다.

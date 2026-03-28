@@ -1,5 +1,3 @@
-import React from 'react'
-
 // 1. Props 타입 정의 (3가지 상태만 허용)
 export interface BadgeProps {
   status: '여유' | '보통' | '혼잡'
