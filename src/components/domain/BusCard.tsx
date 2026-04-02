@@ -1,4 +1,3 @@
-// 💡 핵심: 우리가 이전에 만든 Badge 컴포넌트를 불러옵니다!
 import { Badge } from '../common/Badge'
 
 export interface BusCardProps {
