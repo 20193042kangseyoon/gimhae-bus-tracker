@@ -45,6 +45,7 @@ export const fetchBusLocations = async (routeId: string): Promise<IBusLocation[]
       lat: Number(item.gpslati), // 위도 (문자열로 올 수 있으니 숫자로 변환)
       lng: Number(item.gpslong), // 경도
     }))
+    formattedData.map((bus) => console.log(`nodeid = ${bus.vehId}, vehicleNo = ${bus.plateNo}`))
 
     return formattedData // 깔끔하게 가공된 배열 반환!
   } catch (error) {
@@ -62,7 +63,6 @@ export const fetchRouteId = async (routeNo: string): Promise<string | null> => {
         _type: 'json',
       },
     })
-    console.log(routeNo, response.data)
 
     const items = response.data.response?.body?.items?.item
     if (!items) return null

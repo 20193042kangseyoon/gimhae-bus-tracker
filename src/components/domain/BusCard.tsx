@@ -1,13 +1,9 @@
 import { Badge } from '../common/Badge'
 
 export interface BusCardProps {
-  /** 버스 번호 (예: 701, 마을버스 3) */
   busNumber: string
-  /** 향하는 방향 (예: 시청 방면) */
   destination: string
-  /** 도착까지 남은 시간 (예: 3분, 곧 도착) */
   arrivalTime: string
-  /** 혼잡도 상태 */
   status: '여유' | '보통' | '혼잡'
 }
 
