@@ -4,7 +4,8 @@ import type { IBusLocation } from '../store/useBusStore'
 const CITY_CODE = 38070
 
 interface IPublicBusItem {
-  vehno: string // 차량번호
+  nodeid: string // 차량번호
+  vehicleno: string
   gpslati: number // 위도
   gpslong: number // 경도
 }
@@ -39,8 +40,8 @@ export const fetchBusLocations = async (routeId: string): Promise<IBusLocation[]
 
     // 4. 받아온 날것의 데이터를 우리 Store의 IBusLocation 타입에 맞게 예쁘게 재포장
     const formattedData: IBusLocation[] = itemList.map((item: IPublicBusItem) => ({
-      vehId: item.vehno, // 고유 ID로 차량번호 사용
-      plateNo: item.vehno, // 차량번호 (예: 경남71자1234)
+      vehId: item.nodeid, // 고유 ID로 차량번호 사용
+      plateNo: item.vehicleno, // 차량번호 (예: 경남71자1234)
       lat: Number(item.gpslati), // 위도 (문자열로 올 수 있으니 숫자로 변환)
       lng: Number(item.gpslong), // 경도
     }))
@@ -52,7 +53,6 @@ export const fetchBusLocations = async (routeId: string): Promise<IBusLocation[]
   }
 }
 
-// 🌟 버스 번호(예: '1')를 넣으면 해당 버스의 routeId를 찾아주는 함수
 export const fetchRouteId = async (routeNo: string): Promise<string | null> => {
   try {
     const response = await axios.get('/api/1613000/BusRouteInfoInqireService/getRouteNoList', {
@@ -68,7 +68,7 @@ export const fetchRouteId = async (routeNo: string): Promise<string | null> => {
     if (!items) return null
 
     // 여러 결과 중 정확히 내가 찾는 번호와 일치하는 것 선택
-    // 응답을 1번 버스만 넘기는 것이 아닌 1이 포함된 모든 노선 번호(1, 21, 11, ... )을 넘기기 때문에 필터링 작업이 필수수
+    // 응답을 1번 버스만 넘기는 것이 아닌 1이 포함된 모든 노선 번호(1, 21, 11, ... )을 넘기기 때문에 필터링 작업이 필수
     const itemList = Array.isArray(items) ? items : [items]
     const match = itemList.find((item: IPublicRouteItem) => String(item.routeno) === routeNo)
 
