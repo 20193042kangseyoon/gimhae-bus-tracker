@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { useBusStore } from '@/store/useBusStore'
-import { fetchBusLocations, fetchRouteId } from '@/api/busApi'
+import { fetchBusLocations } from '@/api/busApi'
 import { Layout } from '@/components/layout/Layout'
 import { BusList } from '@/components/domain/BusList'
 
@@ -17,11 +17,13 @@ export default function BusTrackingPage() {
     const initApp = async () => {
       setLoading(true)
       try {
-        const routeId = await fetchRouteId('1')
-        if (routeId) {
-          const data = await fetchBusLocations(routeId)
-          setBusLocations(data) // 이 함수가 실행되면 위의 busLocations 상태가 업데이트됩니다.
-        }
+        const data = await fetchBusLocations('GHB5')
+        setBusLocations(data)
+        // const routeId = await fetchRouteId('1')
+        // if (routeId) {
+        //   const data = await fetchBusLocations(routeId)
+        //   setBusLocations(data) // 이 함수가 실행되면 위의 busLocations 상태가 업데이트됩니다.
+        //}
       } catch (err) {
         setError('데이터 로드 실패')
         console.error(err)

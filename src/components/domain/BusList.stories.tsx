@@ -18,7 +18,6 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-// 🌟 Zustand 상태 조작 없이 args(Props)만 넘겨줍니다!
 export const Default: Story = {
   args: {
     busLocations: [

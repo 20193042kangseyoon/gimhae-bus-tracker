@@ -27,7 +27,7 @@ export const Relaxed: Story = {
 
 export const Normal: Story = {
   args: {
-    busNumber: '701',
+    busNumber: '1',
     status: '보통',
   },
 }

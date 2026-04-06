@@ -1,5 +1,6 @@
-import { Map, useKakaoLoader, MapMarker } from 'react-kakao-maps-sdk'
+import { Map, useKakaoLoader, CustomOverlayMap } from 'react-kakao-maps-sdk'
 import { useBusStore } from '@/store/useBusStore'
+import { MapMarker } from '@/components/domain/MapMarker'
 
 export interface LayoutProps {
   children: React.ReactNode
@@ -62,11 +63,21 @@ export const Layout = ({ children }: LayoutProps) => {
             level={6}
           >
             {busLocations.map((bus) => (
-              <MapMarker
-                key={bus.vehId}
+              <CustomOverlayMap
+                key={bus.vehId || bus.plateNo}
                 position={{ lat: bus.lat, lng: bus.lng }}
-                title={bus.plateNo}
-              />
+                // 💡 yAnchor={1} 설정 필수!
+                // 이 설정이 있어야 마커의 '정중앙'이 아니라 '꼬리 끝부분(맨 아래)'이 좌표에 정확히 꽂힙니다.
+                yAnchor={1}
+                zIndex={1}
+              >
+                {/* 우리가 만든 예쁜 커스텀 React 마커를 내부에 렌더링합니다 */}
+                <MapMarker
+                  busNumber="1"
+                  // TODO: 실제 API 데이터에 혼잡도가 있다면 연결해주세요. 임시로 '보통'을 넣었습니다.
+                  status="보통"
+                />
+              </CustomOverlayMap>
             ))}
           </Map>
         )}
