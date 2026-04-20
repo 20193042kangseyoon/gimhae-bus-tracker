@@ -63,7 +63,7 @@ export const Layout = ({ children }: LayoutProps) => {
             level={6}
           >
             {busLocations.map((bus) => (
-              <AnimatedBusMarker key={bus.vehId || bus.plateNo} bus={bus} />
+              <AnimatedBusMarker key={bus.plateNo} bus={bus} />
             ))}
           </Map>
         )}
