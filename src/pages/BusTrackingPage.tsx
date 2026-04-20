@@ -5,7 +5,7 @@ import { Layout } from '@/components/layout/Layout'
 import { BusList } from '@/components/domain/BusList'
 
 export default function BusTrackingPage() {
-  const ROUTE_ID = 'GHB5'
+  const ROUTE_ID = 'GHB5' // 원래 api/busApi.ts의 fetchRouteId를 호출하여 사용해야 됨
 
   const {
     data: remoteBusList,

@@ -24,7 +24,7 @@ export const fetchBusLocations = async (routeId: string): Promise<IBusLocation[]
     const response = await axios.get('/api/1613000/BusLcInfoInqireService/getRouteAcctoBusLcList', {
       params: {
         pageNo: 1,
-        numOfRows: 5,
+        numOfRows: 2,
         _type: 'json',
         cityCode: CITY_CODE,
         routeId: routeId,

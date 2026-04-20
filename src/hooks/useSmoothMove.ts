@@ -1,11 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
 
-/**
- * 목표 좌표로 지정된 시간 동안 부드럽게 이동(보간)하는 커스텀 훅
- * @param targetLat 목표 위도 (10초마다 갱신됨)
- * @param targetLng 목표 경도 (10초마다 갱신됨)
- * @param duration 이동에 걸리는 시간 (기본값: 9500ms - 10초 폴링 주기보다 살짝 짧게)
- */
 export const useSmoothMove = (targetLat: number, targetLng: number, duration: number = 9500) => {
   // 화면에 실제로 그려질 60fps짜리 실시간 좌표 (초기값은 첫 목표 위치)
   const [currentPos, setCurrentPos] = useState({ lat: targetLat, lng: targetLng })

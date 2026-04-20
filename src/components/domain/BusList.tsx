@@ -24,7 +24,7 @@ export const BusList = ({ busLocations }: BusListProps) => {
     <div className="flex flex-col gap-4">
       {busLocations.map((bus) => (
         <BusCard
-          key={bus.vehId || bus.plateNo}
+          key={bus.plateNo}
           busNumber={bus.plateNo}
           destination="종점 방면"
           arrivalTime="곧 도착"
